@@ -1,0 +1,27 @@
+{
+	"name": "gitbook-with-jsdoc",
+	"version": "1.0.0",
+	"description": "Integrating GitBook with JSDoc",
+	"license": "UNLICENSED",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NicolasReibnitz/gitbook-with-jsdoc.git"
+	},
+	"author": "Nicolas Reibnitz <n.reibnitz@gmail.com> (http://daslaboritory.com/)",
+	"homepage": "https://github.com/NicolasReibnitz/gitbook-with-jsdoc#readme",
+	"bugs": {
+		"url": "https://github.com/NicolasReibnitz/gitbook-with-jsdoc/issues"
+	},
+	"main": "index.js",
+	"scripts": {
+		"docs:api": "jsdoc2md --configure tooling/docs/jsdoc.json --files src/**/*.js > docs/api.md",
+		"docs:build": "npm run docs:prepare && npm run docs:api && gitbook build",
+		"docs:clean": "rimraf _book",
+		"docs:prepare": "gitbook install",
+		"docs:serve": "npm run docs:prepare && npm run docs:api && gitbook serve"
+	},
+	"devDependencies": {
+		"gitbook-cli": "^2.3.2",
+		"jsdoc-to-markdown": "^7.1.1"
+	}
+}
